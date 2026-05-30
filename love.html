@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mona ❤️ My Favorite Chapter</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#ff5e8a;
+  --deep:#c2185b;
+  --soft:#ffd6e0;
+  --bg1:#1a0510;
+  --bg2:#3d0a26;
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  color:#fff;
+  overflow-x:hidden;
+}
+h1,h2,h3,.script{font-family:'Dancing Script',cursive;}
+.serif{font-family:'Cormorant Garamond',serif;}
+
+/* Particles & hearts global container */
+#particles,#hearts{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:1;overflow:hidden;
+}
+.sparkle{
+  position:absolute;width:4px;height:4px;border-radius:50%;
+  background:#fff;box-shadow:0 0 6px 2px rgba(255,200,220,.9);
+  animation:twinkle 3s infinite ease-in-out;
+}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.5);}50%{opacity:1;transform:scale(1.4);}}
+.float-heart{
+  position:absolute;bottom:-40px;color:rgba(255,120,160,.7);
+  animation:rise linear infinite;user-select:none;
+}
+@keyframes rise{
+  0%{transform:translateY(0) rotate(0);opacity:0;}
+  10%{opacity:1;}
+  100%{transform:translateY(-110vh) rotate(360deg);opacity:0;}
+}
+
+/* HERO */
+.hero{
+  position:relative;height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;z-index:2;
+  background:radial-gradient(circle at 50% 40%,rgba(255,94,138,.25),transparent 60%);
+  padding:20px;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(120deg,rgba(194,24,91,.3),rgba(26,5,16,.2),rgba(255,94,138,.3));
+  background-size:400% 400%;
+  animation:gradientMove 15s ease infinite;z-index:-1;
+}
+@keyframes gradientMove{0%{background-position:0 50%;}50%{background-position:100% 50%;}100%{background-position:0 50%;}}
+.hero h1{
+  font-size:clamp(2.5rem,7vw,5.5rem);line-height:1.1;
+  background:linear-gradient(90deg,#fff,var(--soft),var(--pink));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  text-shadow:0 0 40px rgba(255,94,138,.3);
+  animation:fadeUp 1.5s ease both;
+}
+.hero p{margin-top:20px;font-size:1.2rem;opacity:.85;animation:fadeUp 2s ease both;}
+.scroll-down{
+  position:absolute;bottom:30px;font-size:2rem;animation:bounce 2s infinite;
+}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(12px);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+
+/* sections */
+section{position:relative;z-index:2;padding:90px 20px;}
+.section-title{
+  text-align:center;font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:50px;
+  background:linear-gradient(90deg,var(--pink),var(--soft));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.glass{
+  background:rgba(255,255,255,.07);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.15);border-radius:24px;
+  box-shadow:0 8px 40px rgba(0,0,0,.3);
+}
+
+/* love letter */
+.letter{
+  max-width:760px;margin:0 auto;padding:50px 40px;text-align:center;
+}
+.letter p{font-size:1.35rem;line-height:1.9;font-family:'Cormorant Garamond',serif;font-style:italic;}
+.letter .sign{font-family:'Dancing Script',cursive;font-size:2rem;margin-top:25px;color:var(--pink);}
+
+/* quotes */
+.quote{
+  max-width:700px;margin:60px auto;text-align:center;font-style:italic;
+  font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--soft);
+  padding:20px;
+}
+.quote::before{content:"“";font-size:3rem;color:var(--pink);}
+.quote::after{content:"”";font-size:3rem;color:var(--pink);}
+
+/* gallery */
+/* .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1100px;margin:0 auto;}
+.gallery .item{
+  position:relative;height:480px;border-radius:20px;overflow:hidden;cursor:pointer;width:240px;
+  background:linear-gradient(135deg,var(--deep),var(--pink));object-fit: cover;
+  display:block;align-items:center;justify-content:center;
+  transition:transform .4s,box-shadow .4s;font-size:3rem;
+}
+.gallery .item span{font-family:'Dancing Script';font-size:1.3rem;position:absolute;bottom:12px;}
+.gallery .item:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 20px 40px rgba(255,94,138,.4);} */
+/* تنسيق المعرض العام */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* تنسيق المربع (الأب) */
+.gallery .item {
+  position: relative;
+  height: 240px; /* قللنا الارتفاع ليكون متناسقاً */
+  width: 100%;   /* جعلنا العرض 100% ليأخذ مساحة الـ grid */
+  border-radius: 20px;
+  overflow: hidden; /* ضروري جداً لقص الصورة */
+  cursor: pointer;
+  transition: transform .4s, box-shadow .4s;
+}
+
+/* هذا هو الكود الناقص (تنسيق الصورة) */
+.gallery .item img {
+  width: 100%;
+  height: 190%;
+  object-fit: cover; /* الحل للمشكلة: الصورة ستملأ المربع وتُقص الأجزاء الزائدة */
+  object-position: center;
+  display: block;
+}
+
+/* تنسيق النص */
+.gallery .item span {
+  font-family: 'Dancing Script';
+  font-size: 1.3rem;
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.3); /* خلفية خفيفة للنص */
+}
+
+/* التأثير عند التحويم */
+.gallery .item:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(255,94,138,.4);
+}
+
+/* timeline */
+.timeline{max-width:900px;margin:0 auto;position:relative;}
+.timeline::before{content:"";position:absolute;left:50%;top:0;width:3px;height:100%;background:linear-gradient(var(--pink),var(--deep));transform:translateX(-50%);}
+.tl-item{position:relative;width:50%;padding:20px 40px;}
+.tl-item:nth-child(odd){left:0;text-align:right;}
+.tl-item:nth-child(even){left:50%;}
+.tl-item .dot{position:absolute;top:30px;width:18px;height:18px;border-radius:50%;background:var(--pink);box-shadow:0 0 15px var(--pink);}
+.tl-item:nth-child(odd) .dot{right:-9px;}
+.tl-item:nth-child(even) .dot{left:-9px;}
+.tl-card{padding:22px;border-radius:18px;}
+.tl-card h3{color:var(--pink);font-size:1.6rem;}
+.tl-card p{opacity:.85;margin-top:6px;}
+
+/* reasons */
+.reasons{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:25px;max-width:1100px;margin:0 auto;}
+.reason{
+  padding:35px 25px;text-align:center;border-radius:20px;transition:transform .4s;
+  opacity:0;transform:translateY(40px);
+}
+.reason.show{opacity:1;transform:translateY(0);}
+.reason:hover{transform:translateY(-10px) scale(1.04);box-shadow:0 15px 35px rgba(255,94,138,.35);}
+.reason .ico{font-size:2.6rem;}
+.reason h3{font-size:1.7rem;margin:10px 0;color:var(--pink);}
+
+/* counter */
+.counter{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:800px;margin:40px auto 0;}
+.count-box{padding:25px 30px;border-radius:18px;text-align:center;min-width:120px;}
+.count-box .num{font-size:2.8rem;font-weight:600;color:var(--pink);}
+.count-box .lbl{opacity:.8;letter-spacing:2px;font-size:.9rem;text-transform:uppercase;}
+
+/* surprise */
+.surprise-wrap{text-align:center;}
+.heart-btn{
+  font-family:'Poppins';font-size:1.2rem;padding:16px 40px;border:none;border-radius:50px;
+  background:linear-gradient(90deg,var(--pink),var(--deep));color:#fff;cursor:pointer;
+  box-shadow:0 10px 30px rgba(255,94,138,.5);transition:transform .3s;
+}
+.heart-btn:hover{transform:scale(1.07);}
+.secret{
+  max-width:600px;margin:35px auto 0;padding:0 30px;overflow:hidden;max-height:0;opacity:0;
+  transition:all 1s ease;
+}
+.secret.open{max-height:400px;opacity:1;padding:35px 30px;}
+.secret p{font-family:'Cormorant Garamond';font-style:italic;font-size:1.4rem;line-height:1.8;}
+
+/* final heart */
+.final{text-align:center;}
+.big-heart{
+  position:relative;width:180px;height:180px;margin:0 auto 40px;animation:beat 1.4s infinite;
+}
+.big-heart::before,.big-heart::after{
+  content:"";position:absolute;width:90px;height:140px;background:var(--pink);border-radius:90px 90px 0 0;
+  top:0;left:90px;transform:rotate(-45deg);transform-origin:0 100%;
+  box-shadow:0 0 60px var(--pink),0 0 120px rgba(255,94,138,.6);
+}
+.big-heart::after{left:0;transform:rotate(45deg);transform-origin:100% 100%;}
+@keyframes beat{0%,100%{transform:scale(1);}25%{transform:scale(1.12);}40%{transform:scale(1);}}
+.final h2{font-size:clamp(2rem,5vw,3.5rem);max-width:800px;margin:0 auto;color:var(--soft);}
+
+/* music control */
+.music-btn{
+  position:fixed;bottom:25px;right:25px;z-index:50;width:60px;height:60px;border-radius:50%;
+  border:none;cursor:pointer;font-size:1.4rem;color:#fff;
+  background:linear-gradient(135deg,var(--pink),var(--deep));
+  box-shadow:0 8px 25px rgba(255,94,138,.6);transition:transform .3s;
+}
+.music-btn:hover{transform:scale(1.1);}
+.music-btn.playing{animation:spin 4s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+footer{text-align:center;padding:30px;opacity:.6;z-index:2;position:relative;font-family:'Cormorant Garamond';}
+
+@media(max-width:700px){
+  .timeline::before{left:8px;}
+  .tl-item{width:100%;left:0!important;text-align:left!important;padding-left:40px;}
+  .tl-item .dot{left:-1px!important;right:auto!important;}
+  .letter{padding:35px 22px;}
+}
+</style>
+</head>
+<body>
+
+<div id="particles"></div>
+<div id="hearts"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Mona, You Are My<br>Favorite Chapter ❤️</h1>
+  <p class="serif">A love story written just for you...</p>
+  <div class="scroll-down">⌄</div>
+</section>
+
+<div class="quote serif">In all the world, there is no heart for me like yours.</div>
+
+<!-- LOVE LETTER -->
+<section>
+  <h2 class="section-title">A Letter From My Heart</h2>
+  <div class="letter glass">
+    <p>Dear Mona,<br><br>
+    Every day with you is a beautiful gift. Your smile brightens my world, your voice brings me peace, and your presence makes everything better. Thank you for being part of my life. I love you more than words can express. ❤️</p>
+    <div class="sign">Forever Yours</div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section>
+  <h2 class="section-title">Our Precious Moments 📸</h2>
+  <div class="gallery">
+    <div class="item">
+        <img src="imgs/mona.jpeg" alt="">
+        💑<span> :قَد حِرتٌ في جَمال عَيناك مُتعجباً
+ايُعقَل أن أعيُن يوسَف قَد تَوارثَت ؟</span></div>
+    <div class="item">
+        <img src="imgs/mpn2.jpeg" alt="">
+        🌹<span>the most beautiful girl in the world</span></div>
+    <div class="item">
+        <img src="imgs/mona3.jpeg" alt="">
+        <span>عيناك روايه ونا اهوي القراءه </span></div>
+    <div class="item">
+        <img src="imgs/mona4.jpeg" alt="">
+        <span>قلب فواداك حيث شئت من الهوي ما الحب الا للحبيب الاول</span></div>
+    <div class="item">
+        <img src="imgs/mona6.jpeg" alt="">
+        <span>"و مليحةٌ فوقَ الحياءِ تجمَّلت 
+وتكملت بالحسنِ لما تبسمت"💗</span></div>
+
+    <div class="item">
+        <img src="imgs/mona7.jpeg" alt="">
+        <span>‌‎فكأنها قَمَرٌ تَجَلَّى وانزَوَى
+بدراً هِلالاً يَشرحُ الأَرواحَ</span></div>
+    <div class="item">
+        <img src="imgs/mona8.jpeg" alt=""> 
+        <span>‏وَتَبَسَّمَتْ فَبَدَا هِلالٌ لامعٌ
+لو شَافَهُ أهْلُ الصِّيامِ لَعَيَّدُوا.</span></div>
+    <div class="item">
+        <img src="imgs/mona10.jpeg" alt="">
+        💞<span>فِي بَحر عَينيك هَامت كل أشواقِي،
+يَاسَيد الحسنِ هَل تَنوي إغرَاقي؟.</span></div> 
+  </div>
+</section>
+
+<div class="quote serif">You are my sun, my moon, and all of my stars.</div>
+
+<!-- TIMELINE -->
+<section>
+  <h2 class="section-title">Our Beautiful Memories Together</h2>
+  <div class="timeline">
+    <div class="tl-item"><span class="dot"></span><div class="tl-card glass"><h3>The First Hello</h3><p>The moment our eyes met and my world changed forever.</p></div></div>
+    <div class="tl-item"><span class="dot"></span><div class="tl-card glass"><h3>Our First Date</h3><p>Hours felt like minutes, and I knew you were special.</p></div></div>
+    <div class="tl-item"><span class="dot"></span><div class="tl-card glass"><h3>First "I Love You"</h3><p>Three words that meant absolutely everything.</p></div></div>
+    <div class="tl-item"><span class="dot"></span><div class="tl-card glass"><h3>Endless Adventures</h3><p>Every memory we make becomes my favorite one.</p></div></div>
+    <div class="tl-item"><span class="dot"></span><div class="tl-card glass"><h3>Today & Always</h3><p>Still falling deeper in love with you every single day.</p></div></div>
+  </div>
+</section>
+
+<!-- REASONS -->
+<section>
+  <h2 class="section-title">Reasons Why I Love Mona ❤️</h2>
+  <div class="reasons">
+    <div class="reason glass"><div class="ico">😊</div><h3>Your Smile</h3><p>It lights up even my darkest days.</p></div>
+    <div class="reason glass"><div class="ico">💗</div><h3>Your Heart</h3><p>So kind, so warm, so pure and beautiful.</p></div>
+    <div class="reason glass"><div class="ico">🌟</div><h3>Your Soul</h3><p>You make ordinary moments feel magical.</p></div>
+    <div class="reason glass"><div class="ico">🎵</div><h3>Your Voice</h3><p>The sweetest melody I never want to stop hearing.</p></div>
+    <div class="reason glass"><div class="ico">🤗</div><h3>Your Hugs</h3><p>Home isn't a place — it's in your arms.</p></div>
+    <div class="reason glass"><div class="ico">✨</div><h3>Just You</h3><p>For simply being the amazing person you are.</p></div>
+  </div>
+</section>
+
+<!-- COUNTER -->
+<section>
+  <h2 class="section-title">Loving You For ⏳</h2>
+  <div class="counter">
+    <div class="count-box glass"><div class="num" id="days">0</div><div class="lbl">Days</div></div>
+    <div class="count-box glass"><div class="num" id="hours">0</div><div class="lbl">Hours</div></div>
+    <div class="count-box glass"><div class="num" id="mins">0</div><div class="lbl">Minutes</div></div>
+    <div class="count-box glass"><div class="num" id="secs">0</div><div class="lbl">Seconds</div></div>
+  </div>
+</section>
+
+<!-- SURPRISE -->
+<section class="surprise-wrap">
+  <button class="heart-btn" onclick="openHeart()">Open My Heart ❤️</button>
+  <div class="secret glass" id="secret">
+    <p>💌 If I could give you one thing in life, I would give you the ability to see yourself through my eyes — only then would you realize how truly special you are to me. You are my dream come true, Mona. I love you, endlessly. ❤️</p>
+  </div>
+</section>
+
+<div class="quote serif">Whatever our souls are made of, yours and mine are the same.</div>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="big-heart"></div>
+  <h2>Mona, you are my today, my tomorrow, and my forever. ❤️</h2>
+</section>
+
+<footer class="serif">Made with endless love, just for you 💕</footer>
+
+<!-- MUSIC -->
+<button class="music-btn" id="musicBtn" title="Play music">🎵</button>
+<audio id="bgMusic" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* Sparkles */
+const pc=document.getElementById('particles');
+for(let i=0;i<70;i++){
+  const s=document.createElement('div');s.className='sparkle';
+  s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+  s.style.animationDelay=Math.random()*3+'s';
+  s.style.animationDuration=(2+Math.random()*3)+'s';
+  pc.appendChild(s);
+}
+/* Floating hearts */
+const hc=document.getElementById('hearts');
+const emojis=['❤️','💕','💖','💗','💓','🌹'];
+function spawnHeart(){
+  const h=document.createElement('div');h.className='float-heart';
+  h.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+  h.style.left=Math.random()*100+'%';
+  const size=14+Math.random()*26;h.style.fontSize=size+'px';
+  const dur=8+Math.random()*8;h.style.animationDuration=dur+'s';
+  hc.appendChild(h);
+  setTimeout(()=>h.remove(),dur*1000);
+}
+setInterval(spawnHeart,600);
+
+/* Counter - set your special date here */
+const startDate=new Date('2024-11-09T00:00:00');
+function updateCounter(){
+  const now=new Date();let diff=Math.floor((now-startDate)/1000);
+  const d=Math.floor(diff/86400);diff%=86400;
+  const h=Math.floor(diff/3600);diff%=3600;
+  const m=Math.floor(diff/60);const s=diff%60;
+  document.getElementById('days').textContent=d;
+  document.getElementById('hours').textContent=h;
+  document.getElementById('mins').textContent=m;
+  document.getElementById('secs').textContent=s;
+}
+updateCounter();setInterval(updateCounter,1000);
+
+/* Surprise */
+function openHeart(){document.getElementById('secret').classList.toggle('open');}
+
+/* Reasons reveal on scroll */
+const io=new IntersectionObserver(en=>{
+  en.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
+},{threshold:.2});
+document.querySelectorAll('.reason').forEach((r,i)=>{r.style.transitionDelay=i*0.1+'s';io.observe(r);});
+
+/* Music */
+const btn=document.getElementById('musicBtn');const audio=document.getElementById('bgMusic');
+let playing=false;
+btn.addEventListener('click',()=>{
+  if(playing){audio.pause();btn.classList.remove('playing');btn.textContent='🎵';}
+  else{audio.play().catch(()=>{});btn.classList.add('playing');btn.textContent='⏸️';}
+  playing=!playing;
+});
+</script>
+</body>
+</html>
